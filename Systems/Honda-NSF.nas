@@ -4,7 +4,7 @@
 #		This file is licenced under the terms of the GNU General Public Licence V2 or later
 ###############################################################################################
 var config_dlg = gui.Dialog.new("/sim/gui/dialogs/config/dialog", getprop("/sim/aircraft-dir")~"/Systems/config.xml");
-var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",10,"DOUBLE");
+var hangoffspeed = props.globals.initNode("/controls/hang-off-speed",200,"DOUBLE");
 var hangoffhdg = props.globals.initNode("/controls/hang-off-hdg",0,"DOUBLE");
 var waiting = props.globals.initNode("/controls/waiting",0,"DOUBLE");
 
@@ -63,10 +63,12 @@ var forkcontrol = func{
 			var hdgpos = 0;
 		    var posi = getprop("/controls/flight/aileron-manual") or 0;
 		  	if(posi > 0.0001 and getprop("/controls/hangoff") == 1){
-				hdgpos = 360 - 27*posi;
+				hdgpos = 360 - 60*posi;
+				hdgpos = (hdgpos < 333) ? 333 : hdgpos;
 		  		setprop("/sim/current-view/goal-heading-offset-deg", hdgpos);
 		  	}else if (posi < -0.0001 and getprop("/controls/hangoff") == 1){
-				hdgpos = 27*abs(posi);
+				hdgpos = 60*abs(posi);
+				hdgpos = (hdgpos > 27) ? 27 : hdgpos;
 		  		setprop("/sim/current-view/goal-heading-offset-deg", hdgpos);
 			}else if (posi > 0 and posi < 0.0001 and getprop("/controls/hangoff") == 1){
 				setprop("/sim/current-view/goal-heading-offset-deg", 360);
