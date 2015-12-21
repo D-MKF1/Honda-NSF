@@ -209,7 +209,7 @@
       </greater-than>
     </condition>
   </animation>
-  
+ <!-- do not work for m-restart  
   <animation>
     <type>select</type>
     <object-name>fairing</object-name>
@@ -222,7 +222,7 @@
       </not>
     </condition>
   </animation>
-   
+ -->  
   <!-- Driver -->
   	<model>
   		<name>Driver</name>
@@ -336,6 +336,10 @@
         <value type="string">Cockpit View</value>
         </equals>
       </not>
+      <less-than>
+        <property>sim/multiplay/generic/float[3]</property>
+        <value>0.1</value>
+      </less-than>
     </condition>
       <property>surface-positions/left-aileron-pos-norm</property>
       <interpolation>
@@ -408,10 +412,14 @@
 		<object-name>throttlelever</object-name>
 		<object-name>tubes</object-name>  
       <condition>
-        <equals>
-          <property>sim/current-view/name</property>
-          <value type="string">Cockpit View</value>
-        </equals>
+	        <equals>
+	          <property>sim/current-view/name</property>
+	          <value type="string">Cockpit View</value>
+	        </equals>
+	        <less-than>
+	          <property>sim/multiplay/generic/float[3]</property>
+	          <value>0.1</value>
+	        </less-than>
       </condition> 
       <property>surface-positions/left-aileron-pos-norm</property>
       <interpolation>

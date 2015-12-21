@@ -145,41 +145,48 @@ setlistener("/surface-positions/left-aileron-pos-norm", func{
 	var driverview = 0.6*driverpos;
 	driverview = (driverview == 0) ? -0.1 : driverview;	
 	
-	if (omm){
-		if(cvnr == 0){
-			setprop("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.21+driverpos/5));
-			setprop("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21+driverpos/4));
-			setprop("/sim/current-view/z-offset-m",driverview);	
-		} 
-	}else{
-		if(cvnr == 0){
-			var godown = getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") or 0;
-			var lookup = getprop("/controls/gear/brake-right") or 0;
-			var onwork = getprop("/controls/hangoff") or 0;
-			if(godown < hangoffspeed.getValue()){
-				var factor = (position <= 0)? -0.6 : 0.6;
-				factor = (abs(factor) > abs(position)) ? position : factor;
-				if(onwork == 0){
-					settimer(func{setprop("/controls/hangoff",1)},0.1);
-					interpolate("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.19+driverpos/5),0.1);
-					interpolate("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.21 - godown/1300 + lookup/12 + driverpos/4),0.1);
+	if(driverpos < 0.9){
+		if (omm){
+			if(cvnr == 0){
+				setprop("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.21+driverpos/5));
+				setprop("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21+driverpos/4));
+				setprop("/sim/current-view/z-offset-m",driverview);	
+			} 
+		}else{
+			if(cvnr == 0){
+				var godown = getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") or 0;
+				var lookup = getprop("/controls/gear/brake-right") or 0;
+				var onwork = getprop("/controls/hangoff") or 0;
+				if(godown < hangoffspeed.getValue()){
+					var factor = (position <= 0)? -0.6 : 0.6;
+					factor = (abs(factor) > abs(position)) ? position : factor;
+					if(onwork == 0){
+						settimer(func{setprop("/controls/hangoff",1)},0.1);
+						interpolate("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.19+driverpos/5),0.1);
+						interpolate("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.21 - godown/1300 + lookup/12 + driverpos/4),0.1);
+					}else{
+						setprop("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.19+driverpos/5));
+						setprop("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.21 - godown/1300 + lookup/12 + driverpos/4));
+					}
 				}else{
-					setprop("/sim/current-view/x-offset-m", math.sin(factor*1.8)*(1.19+driverpos/5));
-					setprop("/sim/current-view/y-offset-m", math.cos(factor*2.1)*(1.21 - godown/1300 + lookup/12 + driverpos/4));
+					if(onwork == 1){
+						interpolate("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.15+driverpos/5),0.1);
+						interpolate("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21 - godown/1500 + lookup/12 + driverpos/4),0.1);
+						settimer(func{setprop("/controls/hangoff",0)},0.1);
+					}else{
+						setprop("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.15+driverpos/5));
+						setprop("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21 - godown/1500 + lookup/12 + driverpos/4));
+					}
 				}
-			}else{
-				if(onwork == 1){
-					interpolate("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.15+driverpos/5),0.1);
-					interpolate("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21 - godown/1500 + lookup/12 + driverpos/4),0.1);
-					settimer(func{setprop("/controls/hangoff",0)},0.1);
-				}else{
-					setprop("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.15+driverpos/5));
-					setprop("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21 - godown/1500 + lookup/12 + driverpos/4));
-				}
-			}
-			setprop("/sim/current-view/z-offset-m",driverview);	
-		}    
+				setprop("/sim/current-view/z-offset-m",driverview);	
+			}    
+		}
+	}else if(driverpos > 0.9 and cvnr == 0){
+		setprop("/sim/current-view/x-offset-m", 0);
+		setprop("/sim/current-view/y-offset-m", 1.4);
+		setprop("/sim/current-view/z-offset-m", 0.4);
 	}
+
 });
 
 
@@ -350,6 +357,7 @@ setlistener("sim/model/start-idling", func()
 			setprop("/controls/gear/gear-down", 1);
 			setprop("/surface-positions/left-aileron-pos-norm", 0);
 			setprop("/surface-positions/right-aileron-pos-norm", 0);
+			setprop("sim/multiplay/generic/float[3]", 0);
 			setprop("sim/current-view/view-number", 0);
 	
 			fgcommand("reposition");
