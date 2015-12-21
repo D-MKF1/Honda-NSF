@@ -89,7 +89,7 @@
       <center>
        <x-m> 0.5042</x-m>
        <y-m> 0.0</y-m>
-       <z-m> 0.2721</z-m>
+       <z-m> 0.2221</z-m>
       </center>
       <axis>
        <x>0</x>
@@ -110,7 +110,7 @@
 	    <offsets>
 	       <x-m> 0 </x-m>
 	       <y-m> 0 </y-m>
-	       <z-m> 0.02 </z-m>
+	       <z-m> 0.1 </z-m>
       	   <pitch-deg>2</pitch-deg>
 	    </offsets>
 	</model>
@@ -131,7 +131,7 @@
     <offsets>
        <x-m> -0.66 </x-m>
        <y-m> 0.0 </y-m>
-       <z-m> 0.92 </z-m>
+       <z-m> 0.87 </z-m>
       <pitch-deg> -30 </pitch-deg>
     </offsets>
   </model>
@@ -141,8 +141,8 @@
     <path>Aircraft/Honda-NSF/Models/Instruments/transponder/transponder.xml</path>
     <offsets>
         <x-m> -0.74 </x-m>
-        <y-m> -0.16</y-m>
-        <z-m> 0.82 </z-m>
+        <y-m> -0.15</y-m>
+        <z-m> 0.77 </z-m>
       <heading-deg> 124 </heading-deg>
       <roll-deg> 12 </roll-deg>
     </offsets>
@@ -174,7 +174,7 @@
     <offsets>
       <x-m> -0.352 </x-m>
       <y-m>  0.0 </y-m>
-      <z-m>  0.43 </z-m>
+      <z-m>  0.38 </z-m>
     </offsets>
   </model>
   
@@ -184,7 +184,7 @@
     <offsets>
       <x-m> -0.352 </x-m>
       <y-m>  0.0 </y-m>
-      <z-m>  0.43 </z-m>
+      <z-m>  0.38 </z-m>
     </offsets>
   </model>
    
@@ -244,7 +244,7 @@
         </not>
       </condition>
     </animation>
-	
+	  
   	<model>
   		<name>Driver_quick_glance_over_shoulder</name>
   		<path>Aircraft/Honda-NSF/Models/Driver/driver_special.xml</path>
@@ -339,16 +339,16 @@
     </condition>
       <property>surface-positions/left-aileron-pos-norm</property>
       <interpolation>
-		  <entry><ind>-1.0 </ind><dep>    57 </dep></entry>
-        <entry><ind>-0.3 </ind><dep>    57 </dep></entry>
+		  <entry><ind>-1.0 </ind><dep>    55 </dep></entry>
+        <entry><ind>-0.3 </ind><dep>    55 </dep></entry>
         <entry><ind> 0 </ind><dep>     0 </dep></entry>
-        <entry><ind> 0.3 </ind><dep>   -57 </dep></entry>
-        <entry><ind> 1.0 </ind><dep>   -57 </dep></entry>
+        <entry><ind> 0.3 </ind><dep>   -55 </dep></entry>
+        <entry><ind> 1.0 </ind><dep>   -55 </dep></entry>
       </interpolation>
       <center>
        <x-m> 0.0</x-m>
        <y-m> 0.0</y-m>
-       <z-m>-0.175</z-m>
+       <z-m> 0.03</z-m>
       </center>
       <axis>
         <x>  1 </x>
@@ -424,7 +424,7 @@
       <center>
        <x-m> 0.0</x-m>
        <y-m> 0.0</y-m>
-       <z-m>-0.175</z-m>
+       <z-m>-0.225</z-m>
       </center>
       <axis>
         <x>  1 </x>
@@ -466,10 +466,10 @@
         <axis>   
           <x1-m> -0.4549</x1-m>
           <y1-m> -0.0018</y1-m>
-          <z1-m>  0.9156</z1-m>
+          <z1-m>  0.8656</z1-m>
           <x2-m> -0.5549</x2-m>
           <y2-m>  0.00</y2-m>
-          <z2-m>  0.6860</z2-m>
+          <z2-m>  0.6360</z2-m>
         </axis>
       </animation>
 	  
@@ -484,14 +484,14 @@
 	      <object-name>fronttube</object-name>
 	      <object-name>frontwheel</object-name> 
           <property>sim/multiplay/generic/float[2]</property>
-          <factor>-0.07</factor>
+          <factor>-0.13</factor>
 	          <axis>   
 	            <x1-m> -0.4961</x1-m>
 	            <y1-m>  0.0</y1-m>
-	            <z1-m>  0.9231</z1-m>
+	            <z1-m>  0.8731</z1-m>
 	            <x2-m> -0.6059</x2-m>
 	            <y2-m>  0.00</y2-m>
-	            <z2-m>  0.6766</z2-m>
+	            <z2-m>  0.6266</z2-m>
 	          </axis>
       </animation>
 
@@ -509,11 +509,11 @@
 			<object-name>swingarm</object-name>
 			<object-name>swingarmscrew</object-name>
             <property>sim/multiplay/generic/float[5]</property>
-            <factor>-15</factor>
+            <factor>-20</factor>
   	      <center>
   	       <x-m>0.0716</x-m>
   	       <y-m>0.0</y-m>
-  	       <z-m>0.3654</z-m>
+  	       <z-m>0.3154</z-m>
   	      </center>
   	      <axis>
   	        <x>  0 </x>
@@ -536,10 +536,10 @@
           <axis>   
 	          <x1-m> -0.4468</x1-m>
 	          <y1-m>  0.306</y1-m>
-	          <z1-m>  0.8712</z1-m>
+	          <z1-m>  0.8212</z1-m>
 	          <x2-m> -0.5593</x2-m>
 	          <y2-m>  0.0732</y2-m>
-	          <z2-m>  0.9226</z2-m>
+	          <z2-m>  0.8726</z2-m>
           </axis>
         </animation>
 
@@ -668,7 +668,7 @@
    <center>
     <x-m> -0.8239</x-m>
     <y-m> 0.0</y-m>
-    <z-m> 0.1919</z-m>
+    <z-m> 0.1419</z-m>
    </center>
    <axis>
     <x>0</x>
@@ -688,7 +688,7 @@
    <center>
        <x-m> 0.4659</x-m>
        <y-m> 0.0</y-m>
-       <z-m> 0.1641</z-m>
+       <z-m> 0.11	41</z-m>
    </center>
    <axis>
     <x>0</x>
