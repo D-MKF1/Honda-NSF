@@ -54,6 +54,7 @@
     <object-name>handle_left</object-name>
     <object-name>handle_right</object-name>
     <object-name>holder</object-name>
+    <object-name>number</object-name>
     <object-name>relaisbox</object-name>
     <object-name>seat</object-name>
     <object-name>starterbox</object-name>
@@ -318,6 +319,7 @@
 	    <object-name>handle_left</object-name>
 	    <object-name>handle_right</object-name>
 	    <object-name>holder</object-name>
+        <object-name>number</object-name>
 	    <object-name>relaisbox</object-name>
 	    <object-name>seat</object-name>
 	    <object-name>starterbox</object-name>
@@ -400,6 +402,7 @@
 		<object-name>handle_left</object-name>
 		<object-name>handle_right</object-name>
 		<object-name>holder</object-name>
+        <object-name>number</object-name>
 		<object-name>relaisbox</object-name>
 		<object-name>seat</object-name>
 		<object-name>starterbox</object-name>
