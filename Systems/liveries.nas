@@ -1,1 +1,1 @@
-aircraft.livery.init("Aircraft/Honda-NSF100/Models/Liveries");
+aircraft.livery.init("Aircraft/Honda-NSF/Models/Liveries");

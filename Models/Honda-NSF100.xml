@@ -10,7 +10,7 @@
 
   <path>Honda-NSF100.ac</path>  
   
-  <sound><path>Aircraft/Honda-NSF/Sounds/BMW-S-1000-RR_mp-sound.xml</path></sound>
+  <sound><path>Aircraft/Honda-NSF/Sounds/mp-sound.xml</path></sound>
 
   <nasal>
     <load>
@@ -247,7 +247,7 @@
 	  
   	<model>
   		<name>Driver_quick_glance_over_shoulder</name>
-  		<path>Aircraft/Honda-NSF/Models/Driver/driver_special.xml</path>
+  		<path>Aircraft/Honda-NSF/Models/Driver/driver.xml</path>
   	</model>
 
     <animation>
@@ -263,7 +263,7 @@
 	
   	<model>
   		<name>Driver_quick_glance_over_shoulder_right</name>
-  		<path>Aircraft/Honda-NSF/Models/Driver/driver_special_r.xml</path>
+  		<path>Aircraft/Honda-NSF/Models/Driver/driver.xml</path>
   	</model>
 
     <animation>
