@@ -38,7 +38,39 @@
 	<object-name>r_glove</object-name>
     <object-name>r_lowerleg</object-name>
     <object-name>r_thigh</object-name>
+    <condition>
+      <equals>
+        <property>sim/model/livery/file</property>
+        <value>white</value>
+      </equals>
+    </condition>
     <texture>driver.png</texture>
+  </animation>
+  
+  <animation>
+    <type>material</type>
+    <object-name>head</object-name>
+    <object-name>body</object-name>
+    <object-name>helm</object-name>
+    <object-name>l_boot</object-name>
+    <object-name>l_feet</object-name>
+    <object-name>l_forearm</object-name>
+    <object-name>l_glove</object-name>
+    <object-name>l_lowerleg</object-name>
+    <object-name>l_thigh</object-name>
+    <object-name>l_upperarm</object-name>    
+	<object-name>r_boot</object-name>   
+	<object-name>r_forearm</object-name>   
+	<object-name>r_glove</object-name>
+    <object-name>r_lowerleg</object-name>
+    <object-name>r_thigh</object-name>
+    <condition>
+      <equals>
+        <property>sim/model/livery/file</property>
+        <value>repsol</value>
+      </equals>
+    </condition>
+    <texture>driver_repsol.png</texture>
   </animation>
 
   <animation>
