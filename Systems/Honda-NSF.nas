@@ -23,6 +23,13 @@ var messenger_red = func{
 help_win_red.write(arg[0]);
 }
 
+var help_win_gear = screen.window.new( 130, 8, 1, 2 );
+help_win_gear.fg = [1,1,1,3];
+
+var messenger_gear = func{
+help_win_gear.write(arg[0]);
+}
+
 #----- view correction and steering helper ------
 # loop for fork control
 setprop("/controls/flight/fork",0.0);
@@ -251,9 +258,9 @@ setlistener("/gear/gear/rollspeed-ms", func (speed){
 });
 
 
-setlistener("/instrumentation/Honda-NSF/speed-indicator/speed-limiter", func (sl){
-	help_win.write(sprintf("Speed Limit: %.0f", sl.getValue()));
-},1,0);
+#setlistener("/instrumentation/Honda-NSF/speed-indicator/speed-limiter", func (sl){
+#	help_win.write(sprintf("Speed Limit: %.0f", sl.getValue()));
+#},1,0);
 
 #----- brake and holder control ------
 

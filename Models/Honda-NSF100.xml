@@ -276,14 +276,24 @@
         </not>
         <property>sim/multiplay/generic/int[5]</property>
       </condition>
-    </animation>	
+    </animation>
+	
+    <animation>
+      <type>select</type>
+	    <object-name>fairing</object-name>
+	    <object-name>fairing.inner</object-name>
+      <condition>
+        <not>
+          <property>sim/multiplay/generic/int[3]</property>
+        </not>
+      </condition>
+    </animation>
 		
  
   <!-- right left -->
   <animation>
 		<type>rotate</type>
 		<object-name>COMBI</object-name>
-		<object-name>SL</object-name>
 		<object-name>TRANSPONDER</object-name>
 		<object-name>Driver</object-name>
 		<object-name>Driver_quick_glance_over_shoulder</object-name>
@@ -366,7 +376,6 @@
   <animation>
 		<type>rotate</type>
 		<object-name>COMBI</object-name>
-		<object-name>SL</object-name>
 		<object-name>TRANSPONDER</object-name>
 		<object-name>Driver</object-name>
 		<object-name>Driver_quick_glance_over_shoulder</object-name>

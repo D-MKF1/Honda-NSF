@@ -117,7 +117,7 @@ var loop = func {
 		#inertia = (fuel_weight.getValue() + weight.getValue())/245; # 245 max. weight and fuel
 		
 		# overspeed the engine
-		if(rpm.getValue() > (maxrpm - 500)){
+		if(rpm.getValue() > maxrpm+200){
 			if(engine_rpm_regulation.getValue() < 1){
 				killed.setValue(killed.getValue() + 1/maxhealth);
 			}
@@ -151,7 +151,7 @@ var loop = func {
 			vmax = 75;
 			fastcircuit.setValue(0.5);
 		} else if (gear.getValue() == 6) {
-			vmax = 90;
+			vmax = 85;
 			fastcircuit.setValue(0.6);
 		}
 
@@ -162,15 +162,25 @@ var loop = func {
 			  setprop("/sim/weight[1]/weight-lb", throttle.getValue()*300);
 			}else if(fastcircuit.getValue() == 0.2){
 			  transmissionpower = 0.9*throttle.getValue()-propulsion.getValue()/maxrpm;
-			  #setprop("/sim/weight[1]/weight-lb", throttle.getValue()*200);
+			}else if(fastcircuit.getValue() == 0.3){
+			  transmissionpower = 0.7*throttle.getValue()-propulsion.getValue()/maxrpm;
+			}else if(fastcircuit.getValue() == 0.4){
+			  transmissionpower = 0.6*throttle.getValue()-propulsion.getValue()/maxrpm;
+			}else if(fastcircuit.getValue() == 0.5){
+			  transmissionpower = 0.4*throttle.getValue()-propulsion.getValue()/maxrpm;
 			}else{
-			  transmissionpower = 0.65*throttle.getValue()-propulsion.getValue()/maxrpm;
-			  #setprop("/sim/weight[1]/weight-lb", 0);
+			  transmissionpower = 0.2*throttle.getValue()-propulsion.getValue()/maxrpm;
 			}
 			transmissionpower = transmissionpower * (1- killed.getValue());
 			propulsion.setValue(transmissionpower);
 			
 			newrpm = (bwspeed < 1 and throttle.getValue() > 0.1) ? throttle.getValue()*(maxrpm+250) : (maxrpm+250)/vmax*bwspeed;
+			if(lastgear == 0 and newrpm < lastrpm){
+			    newrpm = lastrpm;
+				#help_win.write(sprintf("lastrpm: %.2f newrpm: %.2f", lastrpm, rpm.getValue()));
+			}else if(newrpm < minrpm){
+				newrpm = minrpm;
+			}
 			rpm.setValue(newrpm);
 			
 			# killing engine with the wrong gear and backwheel on earth
@@ -202,45 +212,34 @@ var loop = func {
 			engine_brake.setValue(0);
 		}
 		
-		help_win.write(sprintf("Propulsion: %.2f Speed: %.2f", propulsion.getValue(), bwspeed));
-		
 		# Automatic RPM overspeed regulation
-		if(rpm.getValue() > maxrpm-200){
+		if(rpm.getValue() > maxrpm-400){
 			if(engine_rpm_regulation.getValue() == 1 ){
 				propulsion.setValue(0);
-				if (bwspeed > 20) engine_brake.setValue(0.6);
-				rpm.setValue(maxrpm-100);
+				if (bwspeed > 20) engine_brake.setValue(1.0);
+				rpm.setValue(maxrpm-500);
 				setprop("/controls/Honda-NSF/ctrl-light-overspeed", 1);
 			}else{
 				setprop("/controls/Honda-NSF/ctrl-light-overspeed", 1);
 			}
-			
+	
 		}else{
 			setprop("/controls/Honda-NSF/ctrl-light-overspeed", 0);
 		}
 
-		# Anti - slip regulation BMW called ASC
-		if(comp_m < 0.06 and brake_ctrl_right <= 0.5 and brake_ctrl_left <= 0.5 and gspeed > 70 and ascon.getValue() == 1){
-			propulsion.setValue(propulsion.getValue() + 0.25);
-			setprop("/controls/Honda-NSF/ASC/ctrl-light", 1);
-		}else{
-			setprop("/controls/Honda-NSF/ASC/ctrl-light", 0);
-		}
-		
-		#help_win.write(sprintf("Leistung (in PS): %.2f", propulsion.getValue()*273.85));
 
-	   	 if((rpm.getValue()+1000) < minrpm){
-		 		rpm.setValue(minrpm);  # place after the rpm calculation
-		 }
-	 
-	   	 if (fuel.getValue() < 0.000002) {
-	   	  running.setValue(0);
-	   	  }
-	   	 else {
-	   	  fuel_lev = fuel.getValue();
-		  setprop("/controls/fuel/remember-level", fuel.getValue()); # save it for restart
-	   	  fuel.setValue(fuel_lev - (throttle.getValue()+0.1)*0.000001);
-	   	 }
+		if((rpm.getValue()) < minrpm){
+			rpm.setValue(minrpm);  # place after the rpm calculation
+		}
+
+		if (fuel.getValue() < 0.000002) {
+			running.setValue(0);
+		}
+		else {
+			fuel_lev = fuel.getValue();
+			setprop("/controls/fuel/remember-level", fuel.getValue()); # save it for restart
+			fuel.setValue(fuel_lev - (throttle.getValue()+0.1)*0.000001);
+		}
 		
 		#-------------- ENGINE RUNNING END --------------------
 		
@@ -252,9 +251,9 @@ var loop = func {
 	}
 	
 	if(getprop("instrumentation/Honda-NSF/speed-indicator/selection")){
-		help_win.write(sprintf(" %.0f / %.0f mph", gear.getValue(), speed));
+		help_win_gear.write(sprintf(" %.0f / %.0f mph", gear.getValue(), speed));
 	}else{
-		help_win.write(sprintf(" %.0f / %.0f km/h", gear.getValue(), speed));
+		help_win_gear.write(sprintf(" %.0f / %.0f km/h", gear.getValue(), speed));
 	}
 	
 	
