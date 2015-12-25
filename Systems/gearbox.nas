@@ -167,9 +167,9 @@ var loop = func {
 			}else if(fastcircuit.getValue() == 0.4){
 			  transmissionpower = 0.6*throttle.getValue()-propulsion.getValue()/maxrpm;
 			}else if(fastcircuit.getValue() == 0.5){
-			  transmissionpower = 0.4*throttle.getValue()-propulsion.getValue()/maxrpm;
+			  transmissionpower = 0.45*throttle.getValue()-propulsion.getValue()/maxrpm;
 			}else{
-			  transmissionpower = 0.2*throttle.getValue()-propulsion.getValue()/maxrpm;
+			  transmissionpower = 0.38*throttle.getValue()-propulsion.getValue()/maxrpm;
 			}
 			transmissionpower = transmissionpower * (1- killed.getValue());
 			propulsion.setValue(transmissionpower);
