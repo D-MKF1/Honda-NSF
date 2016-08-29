@@ -229,7 +229,71 @@
   	      <halign>right</halign>
   	    </text>
   	  </group>	
+
+  	  <group>
+  	    <layout>hbox</layout>
+  	    <text>
+  	      <label>Texas - Circuit of the Americas (02XS) .......................................</label>
+  	      <halign>left</halign>
+  	    </text>
+  	    <input>
+  	      <property>/Honda-NSF/CA/race-laps</property>
+  	      <type>INTEGER</type>
+  	    </input>
+  	    <text>
+  	      <label>laps</label>
+  	      <halign>right</halign>
+  	    </text>
+  	  </group>	
+
+  	  <group>
+  	    <layout>hbox</layout>
+  	    <text>
+  	      <label>Espagna - Circuito de Jerez (LEJR) ..............................................</label>
+  	      <halign>left</halign>
+  	    </text>
+  	    <input>
+  	      <property>/Honda-NSF/JE/race-laps</property>
+  	      <type>INTEGER</type>
+  	    </input>
+  	    <text>
+  	      <label>laps</label>
+  	      <halign>right</halign>
+  	    </text>
+  	  </group>	
 	  	  
+  	  <group>
+  	    <layout>hbox</layout>
+  	    <text>
+  	      <label>Czech - Automotodrom Brno (LKCM) ............................................</label>
+  	      <halign>left</halign>
+  	    </text>
+  	    <input>
+  	      <property>/Honda-NSF/BC/race-laps</property>
+  	      <type>INTEGER</type>
+  	    </input>
+  	    <text>
+  	      <label>laps</label>
+  	      <halign>right</halign>
+  	    </text>
+  	  </group>	  
+	  	  
+  	  <group>
+  	    <layout>hbox</layout>
+  	    <text>
+  	      <label>Great Britain - Silverstone (EGBT) .................................................</label>
+  	      <halign>left</halign>
+  	    </text>
+  	    <input>
+  	      <property>/Honda-NSF/SC/race-laps</property>
+  	      <type>INTEGER</type>
+  	    </input>
+  	    <text>
+  	      <label>laps</label>
+  	      <halign>right</halign>
+  	    </text>
+  	  </group>	
+	  	  	  
   	  <group>
   	    <layout>hbox</layout>
   	    <text>
