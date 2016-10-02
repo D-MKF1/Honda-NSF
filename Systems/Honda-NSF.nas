@@ -196,9 +196,9 @@ setlistener("/surface-positions/left-aileron-pos-norm", func{
 					}
 				}else{
 					if(onwork == 1){
-						interpolate("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.15+driverpos/5),0.1);
-						interpolate("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21 - godown/1500 + lookup/12 + driverpos/4),0.1);
-						settimer(func{setprop("/controls/hangoff",0)},0.1);
+						interpolate("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.15+driverpos/5),1.0);
+						interpolate("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21 - godown/1500 + lookup/12 + driverpos/4),1.0);
+						settimer(func{setprop("/controls/hangoff",0)},1.0);
 					}else{
 						setprop("/sim/current-view/x-offset-m", math.sin(position*1.6)*(1.15+driverpos/5));
 						setprop("/sim/current-view/y-offset-m", math.cos(position*1.9)*(1.21 - godown/1500 + lookup/12 + driverpos/4));
